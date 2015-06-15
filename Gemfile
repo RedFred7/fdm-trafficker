@@ -9,7 +9,6 @@ ruby "2.2.1"
 gem "slim"
 gem "sinatra" #rack is a gem dependency of sinatra so we don't need to write gem "rack"
 gem "cucumber"
-gem "pg"
 gem "ohm"
 gem "nokogiri"
 
