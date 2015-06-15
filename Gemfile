@@ -10,6 +10,9 @@ gem "slim"
 gem "sinatra" #rack is a gem dependency of sinatra so we don't need to write gem "rack"
 gem "cucumber"
 gem "pg"
+gem "ohm"
+gem "nokogiri"
+
 group :developement do
 	#reload sinatra every time a change is made to the code
 	gem "rerun"
