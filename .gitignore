@@ -1,4 +1,4 @@
-# Created by https://www.gitignore.io
+
 
 ### Ruby ###
 *.gem
@@ -38,6 +38,16 @@ build/
 .rvmrc
 
 
+### Linux ###
+*~
+
+# KDE directory preferences
+.directory
+
+# Linux trash folder which might appear on any partition or disk
+.Trash-*
+
+
 ### SublimeText ###
 # cache files for sublime text
 *.tmlanguage.cache
@@ -53,20 +63,4 @@ build/
 
 # sftp configuration file
 sftp-config.json
-
-
-### Linux ###
-*~
-
-# KDE directory preferences
-.directory
-
-# Linux trash folder which might appear on any partition or disk
-.Trash-*
-
-
-### Redis ###
-# Ignore redis binary dump (dump.rdb) files
-
-*.rdb
 
