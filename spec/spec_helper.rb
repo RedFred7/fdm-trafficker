@@ -89,3 +89,6 @@ RSpec.configure do |config|
   Kernel.srand config.seed
 =end
 end
+
+require_relative '../lib/situation'
+require_relative '../lib/my_modules/utils'

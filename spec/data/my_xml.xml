@@ -1,0 +1,17 @@
+<situation id="GUID704556311"><headerInformation></headerInformation><situationRecord xsi:type="AbnormalTraffic" id="GUID1-704556338"><situationRecordCreationReference>U-15-0615-0009</situationRecordCreationReference><situationRecordCreationTime>2015-06-15T05:39:16+01:00</situationRecordCreationTime><situationRecordVersion>28</situationRecordVersion><situationRecordVersionTime>2015-06-15T17:18:38+01:00</situationRecordVersionTime><situationRecordFirstSupplierVersionTime>2015-06-15T17:18:38+01:00</situationRecordFirstSupplierVersionTime><probabilityOfOccurrence>certain</probabilityOfOccurrence><sourceInformation><sourceCountry>gb</sourceCountry><sourceName><value lang="en">TCC System</value></sourceName></sourceInformation><validity><validityStatus>definedByValidityTimeSpec</validityStatus><validityTimeSpecification><overallStartTime>2015-06-15T05:39:28+01:00</overallStartTime><overallEndTime>2015-06-15T19:30:00+01:00</overallEndTime><validPeriod><startOfPeriod>2015-06-15T05:39:28+01:00</startOfPeriod><endOfPeriod>2015-06-15T19:30:00+01:00</endOfPeriod></validPeriod></validityTimeSpecification></validity><impact><impactOnTraffic>congested</impactOnTraffic><impactDetails><capacityRemaining>100.0</capacityRemaining><numberOfLanesRestricted>3</numberOfLanesRestricted><numberOfOperationalLanes>3</numberOfOperationalLanes><originalNumberOfLanes>3</originalNumberOfLanes><trafficRestrictionType>carriagewayPartiallyObstructed</trafficRestrictionType></impactDetails><delays><delayTimeValue>3000.0</delayTimeValue></delays></impact><nonGeneralPublicComment><comment><value lang="en">On the M25 anti-clockwise between junctions J3 and J31, there are currently delays of 50 mins due to heavy traffic . Normal traffic conditions expected from 7:30 pm.
+
+
+
+Link to Multimap:
+
+Unavailable
+
+
+
+Link to Streetmap: 
+
+http://streetmap.co.uk/grid/555705,172059
+
+
+
+Link to Disclaimer: http://www.highways.gov.uk/terms-and-conditions/</value></comment></nonGeneralPublicComment><groupOfLocations><locationContainedInGroup xsi:type="Point"><tpegpointLocation xsi:type="TPEGFramedPoint"><tpegDirection>anticlockwise</tpegDirection><tpegLocationType>framedPoint</tpegLocationType><framedPoint><pointCoordinates><latitude>51.42615</latitude><longitude>0.238258</longitude></pointCoordinates><name><descriptor><value lang="en">M25 anti-clockwise within J2</value></descriptor><tpegDescriptorType>linkName</tpegDescriptorType></name></framedPoint><to xsi:type="TPEGJunction"><pointCoordinates><latitude>51.483555</latitude><longitude>0.266965</longitude></pointCoordinates><name><descriptor><value lang="en">J31</value></descriptor><tpegDescriptorType>junctionName</tpegDescriptorType></name><ilc><descriptor><value lang="en">M25</value></descriptor><tpegDescriptorType>tpegILCName1</tpegDescriptorType></ilc><ilc><descriptor><value lang="en">A1306</value></descriptor><tpegDescriptorType>tpegILCName2</tpegDescriptorType></ilc></to><from xsi:type="TPEGJunction"><pointCoordinates><latitude>51.384132</latitude><longitude>0.19043</longitude></pointCoordinates><name><descriptor><value lang="en">J3</value></descriptor><tpegDescriptorType>junctionName</tpegDescriptorType></name><ilc><descriptor><value lang="en">M25</value></descriptor><tpegDescriptorType>tpegILCName1</tpegDescriptorType></ilc><ilc><descriptor><value lang="en">M20</value></descriptor><tpegDescriptorType>tpegILCName2</tpegDescriptorType></ilc></from></tpegpointLocation></locationContainedInGroup></groupOfLocations><abnormalTrafficType>slowTraffic</abnormalTrafficType></situationRecord></situation>
