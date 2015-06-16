@@ -2,10 +2,27 @@ require 'ohm'
 require 'open-uri'
 require 'nokogiri'
 
+# class Situation < Ohm::Model
+#   attribute :id
+#   unique :id
+#   attribute :version
+#   attribute :time
+#   attribute :date
+#   attribute :comment
+#   attribute :location_name
+#   attribute :location_coordinates
+#   attribute :traffic_type
+#   attribute :delay_time
+#   attribute :capacityRemaining
+#   attribute :trafficRestrictionType
+# end
+
 class Situation < Ohm::Model
   attribute :id
   unique :id
   attribute :version
+  attribute :type
+  index :type
   attribute :time
   attribute :date
   attribute :comment
@@ -17,9 +34,9 @@ class Situation < Ohm::Model
   attribute :trafficRestrictionType
 end
 
+situation = Situation.new
 
-
-
+puts situation.date
 
 # @arr = []
 
