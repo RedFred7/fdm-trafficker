@@ -90,5 +90,6 @@ RSpec.configure do |config|
 =end
 end
 
+require_relative "../lib/scraper" 
 require_relative '../lib/situation'
 require_relative '../lib/my_modules/utils'
