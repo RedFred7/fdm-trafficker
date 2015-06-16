@@ -12,7 +12,7 @@ gem "cucumber"
 gem "ohm"
 gem "nokogiri"
 gem "assert_json"
-
+gem "json"
 group :developement do
 	#reload sinatra every time a change is made to the code
 	gem "rerun"
