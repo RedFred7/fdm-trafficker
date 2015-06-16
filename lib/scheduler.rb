@@ -1,24 +1,28 @@
 require 'rufus-scheduler'
-require 'open-uri'
-require 'nokogiri'
-
-class ParseWebXML
-  def self.parse(xmlurl)
-    array = []
-    doc = Nokogiri::HTML(open(xmlurl))
-    doc.css("situation").each do |situation|
-      array << situation
-    end
-    array
-  end
-end
+#require 'situation'
+require_relative 'scraper'
+require_relative 'validator'
 
 scheduler = Rufus::Scheduler.new
-scheduler.interval '10m' do
+
+scheduler.interval '1s' do
+
   arr = ParseWebXML.parse("http://hatrafficinfo.dft.gov.uk/feeds/datex/England/UnplannedEvent/content.xml")
-  arr.each do |situation| 
-  	Situation.new(situation.to_s)
+
+  arr.each do |situation|
+
+    if Validator.validate(situation)
+
+      #Situation.new(situation.to_s)
+
+      puts "created"
+
+    else
+    	puts "bad code"
+    end
+
   end
+
 end
 
 scheduler.join
