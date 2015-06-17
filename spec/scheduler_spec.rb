@@ -20,7 +20,7 @@ end
 describe Scheduler do
   before :all do
     @arr = ParseWebXML.parse("http://hatrafficinfo.dft.gov.uk/feeds/datex/England/UnplannedEvent/content.xml")
-    Scheduler.start 
+    #Scheduler.start 
   end
 
   it "creates an object of type situation when passed a valid url" do
