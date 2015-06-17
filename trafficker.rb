@@ -1,6 +1,9 @@
+# @c.j.chandler
+
 require "sinatra"
 require "json"
-require_relative "lib/ohm"
+require "rspec-mocks"
+require_relative "lib/situation"
 
 configure :development do
   set :port, 1337
@@ -95,4 +98,3 @@ end
 not_found do
   slim :error
 end
-

@@ -30,6 +30,7 @@ group :developement, :testing do
 	gem "capybara"
 #this is why we use javascript
 	gem "selenium-webdriver"
+	gem "rspec-mocks"
 
 end
 
