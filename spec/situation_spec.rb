@@ -1,23 +1,22 @@
-require_relative '../lib/situation'
-require_relative '../lib/my_modules/utils'
+# arr = ParseWebXML.parse("http://hatrafficinfo.dft.gov.uk/feeds/datex/England/UnplannedEvent/content.xml")
+# #p arr[1]
+# s = Situation.initialize(arr[0].to_s)
+
 
 describe Situation do
-  it "ensures data is read from string" do
-    Utils::XML.read_xml do |x|
-      s = Situation.initialize(x.to_s)
-      expect(s).to eq(0)
+  it "ensures data is read from XML file and fed into situation object" do
+   arr = ParseWebXML.parse("http://hatrafficinfo.dft.gov.uk/feeds/datex/England/UnplannedEvent/content.xml")
+      s = Situation.initialize(arr[0].to_s)
+      expect(s.to_s).not_to be_empty
     end
-  end
+ 
+
+  # it "ensures identical guid is stored from XML to situation object" do
+  #   arr = ParseWebXML.parse("http://hatrafficinfo.dft.gov.uk/feeds/datex/England/UnplannedEvent/content.xml")
+  #   s = Situation.initialize(arr[0].to_s)
+  #   s.guid
+  # end
+
 end
 
-# 	it "has right number of groups" do
-# 		group = Group.new('/home/ubuntu/work_directory/FDM_Ruby_Sinatra_training_course/world_cup.csv')
-# 		expect(group.big_hash.length).to eq(8)
-# 	end
 
-# 	it "groups have right number of teams" do
-# 		group = Group.new('/home/ubuntu/work_directory/FDM_Ruby_Sinatra_training_course/world_cup.csv')
-# 		group.big_hash.each do |k,v|
-# 			end
-# 	end
-# end

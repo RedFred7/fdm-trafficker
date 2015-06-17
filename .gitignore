@@ -64,3 +64,6 @@ build/
 # sftp configuration file
 sftp-config.json
 
+#git files
+*.orig
+

@@ -139,6 +139,3 @@ DEPENDENCIES
   slim
   whenever
   yard (~> 0.8)
-
-BUNDLED WITH
-   1.10.3
