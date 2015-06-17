@@ -2,7 +2,6 @@
 
 require "sinatra"
 require "json"
-require "rspec-mocks"
 require_relative "lib/situation"
 
 configure :development do
@@ -43,36 +42,24 @@ get "/events" do
   slim :events
 end
 
-get "/roadworks" do
-  if !Situation.find(type: "roadworks").nil?
-    @roadworks = situation.attributes.to_json
-    body << @roadworks
-    slim :roadworks
-  else
-    slim :error
-  end
-end
 
 get "/accidents" do
-  if !Situation.find(type: "accident").nil?
-    @accidents = situation.attributes.to_json
-    body << @accidents
-    slim :accidents
+  rs = Situation.find(type: "accident")
+  results = []
+  if rs.size > 0
+    rs.each do |r| 
+      results << r.attributes
+    end
+    status 200
+    body << results.to_json
+    # slim :accidents
   else
-    slim :error
+    # slim :error
   end
+  body
 end
 
-get "/roadworks/:id" do
-  @id = params[:id]
-  if situation.attributes[:id].to_s == @id.to_s
-    @roadworks_id = situation.attributes
-    body << @roadworks_id unless Situation.find(type: "roadworks").nil?
-    slim "roadworks_#{@id}".to_sym
-  else
-    slim :error
-  end
-end
+
 
 get "/accidents/:id" do
   @id = params[:id]
@@ -85,10 +72,7 @@ get "/accidents/:id" do
   end
 end
 
-delete "/roadworks" do
-  res = Situation.find(type: "roadworks")
-  res.each {|object| object.delete}
-end
+
 
 delete "/accidents" do
   res = Situation.find(type: "accident")

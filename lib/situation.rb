@@ -8,6 +8,7 @@ require_relative 'scraper'
 class Situation < Ohm::Model
   attribute :guid
   unique :guid
+  index :guid
   attribute :version
   attribute :time
   attribute :type

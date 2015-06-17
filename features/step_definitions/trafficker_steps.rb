@@ -10,7 +10,6 @@ require "assert_json"
 require_relative "../../lib/situation"
 
 situation = Situation.new
-attributes = double(attributes)
 
 Given(/^that the events are created$/) do
   expect(situation.attributes).to be_an_instance_of Hash
