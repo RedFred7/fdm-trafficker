@@ -11,4 +11,3 @@ class ParseWebXML
     array
   end
 end
-

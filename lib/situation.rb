@@ -6,21 +6,8 @@ require_relative 'my_modules/utils'
 require_relative 'scraper'
 
 class Situation < Ohm::Model
-  attribute :guid
-  unique :guid
-  attribute :version
-  attribute :time
-  attribute :type
-  index :type
-  attribute :date
-  attribute :comment
-  attribute :location_name
-  attribute :location_coordinates
-  attribute :traffic_type
-  attribute :delay_time
-  attribute :capacityRemaining
-  attribute :trafficRestrictionType
 
+<<<<<<< HEAD
   # def self.initialize(xml_situation)
   # 	doc = Nokogiri::XML( xml_situation )
   # 	@doc = doc.xpath("/situation")
@@ -41,3 +28,7 @@ end
 # s = Situation.initialize(arr[1].to_s)
 # #p s.date
 
+=======
+
+end
+>>>>>>> traffic_features
