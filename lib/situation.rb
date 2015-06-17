@@ -43,7 +43,6 @@ class Situation < Ohm::Model
 
   def self.get_time
     str = @doc.xpath("/situation/situationrecord/situationrecordcreationtime").text
-    p str
     date = DateTime.parse str
     date.strftime("%H:%M:%S")
   end
@@ -93,16 +92,14 @@ class Situation < Ohm::Model
    @doc.xpath("/situation/situationrecord/impact/impactdetails/trafficrestrictiontype").text
   end
 
-  # def tester
-  #   Utils::XML.read_xml do |x|
-  #      x.xpath("/html/body/2logicalmodel")
-  #   end
-  # end
+  def tester
+    xml = Nokogiri::HTML(open("http://hatrafficinfo.dft.gov.uk/feeds/datex/England/UnplannedEvent/content.xml"))
+    res = xml.xpath("/html/body/d2logicalmodel/payloadpublication/situation/situationrecord/@id")[0]
+  end
 
 end
 
 arr = ParseWebXML.parse("http://hatrafficinfo.dft.gov.uk/feeds/datex/England/UnplannedEvent/content.xml")
-#p arr[1]
 s = Situation.initialize(arr[0].to_s)
 
-# p s.tester
+#p s.attributes
