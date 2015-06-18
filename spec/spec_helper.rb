@@ -92,3 +92,4 @@ end
 
 require_relative '../lib/situation'
 require_relative '../lib/modules/utils'
+require_relative '../lib/aggregateFunctions'
