@@ -91,5 +91,7 @@ RSpec.configure do |config|
 end
 
 require_relative '../lib/situation'
+require_relative '../lib/scraper'
 require_relative '../lib/modules/utils'
 require_relative '../lib/aggregateFunctions'
+require_relative '../lib/region_finder'
