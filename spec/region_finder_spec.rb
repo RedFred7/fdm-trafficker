@@ -1,8 +1,8 @@
 require 'webmock/rspec'
-
 describe RegionFinder do
-
+  
   before :each do
+    WebMock.disable_net_connect!(allow_localhost: false)
     json_returned_postcode = {"postcode"=>"B36 9DQ", "geo"=>{"lat"=>52.507504103916, "lng"=>-1.789771358500505, "easting"=>414365.0, "northing"=>289977.0, "geohash"=>"http://geohash.org/gcqdxq8wrk1w"}, "administrative"=>{"council"=>{"title"=>"Solihull", "uri"=>"http://statistics.data.gov.uk/id/statistical-geography/E08000029", "code"=>"E08000029"}, "ward"=>{"title"=>"Castle Bromwich", "uri"=>"http://statistics.data.gov.uk/id/statistical-geography/E05001286", "code"=>"E05001286"}, "constituency"=>{"title"=>"Meriden", "uri"=>"http://statistics.data.gov.uk/id/statistical-geography/E14000812", "code"=>"E14000812"}, "parish"=>{"title"=>"Castle Bromwich", "uri"=>"http://statistics.data.gov.uk/id/statistical-geography/E04000149", "code"=>"E04000149"}}}.to_json
     stub_request(:get, "http://uk-postcodes.com/latlng/52.509186,-1.789579.json").
       with(:headers => {'Accept'=>'*/*', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'User-Agent'=>'Ruby'}).
@@ -29,12 +29,8 @@ describe RegionFinder do
       expect(RegionFinder.european_region_from_postcode("B36 9DQ")).to eq("West Midlands")
     end
   end
-#TODO: Ask Fred why this isn't picking up the logger.log file
-  describe ".postcode_from_lat_long" do
-    it "adds a new log to the logger.log file"
-    original_logger_length = `wc -l ../logger.log | awk '{print $1}'`.to_i
-    puts "*********************#{original_logger_length}*****************************"
-    RegionFinder.european_region_from_postcode(222)
-    expect(`wc -l ../logger.log | awk '{print $1}'`.to_i-1).to eq(original_logger_length)
+
+  after :each do 
+    WebMock.allow_net_connect!
   end
 end

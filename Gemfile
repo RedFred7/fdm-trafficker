@@ -14,6 +14,7 @@ gem "ohm"
 gem "nokogiri"
 gem "assert_json"
 gem "json"
+gem "log4r"
 group :developement do
 	#reload sinatra every time a change is made to the code
 	gem "rerun"
@@ -37,4 +38,5 @@ end
 group :testing do 
 	#test coverage
 	gem "simplecov"
+	gem "web/mock"
 end

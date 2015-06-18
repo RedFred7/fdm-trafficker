@@ -90,10 +90,7 @@ RSpec.configure do |config|
 =end
 end
 
-# require_relative '../lib/situation'
-require_relative '../lib/my_modules/utils'
+require_relative '../lib/situation'
+require_relative '../lib/scraper'
+require_relative '../lib/modules/utils'
 require_relative '../lib/region_finder'
-require_relative '../lib/logger'
-require 'webmock/rspec'
-#disables all net connections to ensure our tests are standalone unit tests.
-WebMock.disable_net_connect!(allow_localhost: true)

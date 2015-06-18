@@ -67,3 +67,9 @@ sftp-config.json
 #git files
 *.orig
 
+#redis
+*.rdb
+
+#log files
+*.log
+

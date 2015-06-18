@@ -1,8 +1,6 @@
-# @author Tomos John Rees
 require 'net/http'
 require 'json'
 require 'open-uri'
-require_relative 'logger'
 
 class RegionFinder
   #Finds the region where the point based on it's latitude and longitude is located.
@@ -13,8 +11,6 @@ class RegionFinder
     postcode = postcode_from_lat_long(latitude, longitude)
     if postcode
       european_region_from_postcode(postcode)
-    else
-      #TODO: need logger here
     end
   end
 
@@ -30,12 +26,11 @@ class RegionFinder
         return v["name"] if v.has_value?("European region")
       end
     else
-      Logger.log.error("class = #{self.name}, method=#{ __method__}, postcode = #{postcode}")
       return
     end
   end
 
-  #Finds the postcode closest to point based on it's latitude and longitude.
+  #Finds the postcode closest to a point based on it's latitude and longitude.
   # @param one [Fixnum] Latitude of the point of interest.
   # @param two [Fixnum] Longitude of the point of interest.
   # @return [String] Postcode nearest to the point of interest.
@@ -45,7 +40,6 @@ class RegionFinder
       response = Net::HTTP.get(forwarded_uri)
       JSON.parse(response)["postcode"]
     rescue OpenURI::HTTPError => e
-      Logger.log.error("#{e}, class=#{self.name}, method=#{ __method__}, latitude=#{latitude}, longitude=#{longitude}")
       return
     end
   end
