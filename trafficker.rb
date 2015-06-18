@@ -47,29 +47,30 @@ get "/accidents" do
   rs = Situation.find(type: "accident")
   results = []
   if rs.size > 0
-    rs.each do |r| 
+    rs.each do |r|
       results << r.attributes
     end
     status 200
-    body << results.to_json
     # slim :accidents
   else
+    status 500
     # slim :error
   end
-  body
+  body << results.to_json
 end
 
 
 
-get "/accidents/:id" do
-  @id = params[:id]
-  if situation.attributes[:id].to_s == @id.to_s
-    @accidents_id = situation.attributes
-    body << @accidents_id unless Situation.find(type: "accident").nil?
-    slim "accidents_#{@id}".to_sym
+get "/accidents/:guid" do
+  rs = Situation.find(guid: params[:guid])
+  results = []
+  if rs.size == 1
+    results << rs.first.attributes
+    status 200
   else
-    slim :error
+    status 500
   end
+  body << results.to_json
 end
 
 

@@ -5,22 +5,30 @@ require 'net/http'
 require 'json'
 require 'sinatra'
 require 'open-uri'
-require "assert_json"
-require 'rake'
 require_relative "../../lib/situation"
 
 
-Before('@accident') do
-  puts "------------ running Before hook"
-  load File.join(File.dirname(__FILE__), '../..', 'Rakefile')
-  Rake::Task['test:seed_redis'].invoke
-end
+# Before('@accidents') do
+#   puts "------------ running Before hook"
+#   load File.join(File.dirname(__FILE__), '../..', 'Rakefile')
+#   Rake::Task['test:seed_redis'].invoke
+# end
 
-After('@accident') do
-  puts "------------ running After hook"
-  load File.join(File.dirname(__FILE__), '../..', 'Rakefile')
-  Rake::Task['test:clear_redis'].invoke
-end
+# Before('@specific_accident') do
+#   puts "------------ running Before hook"
+#   load File.join(File.dirname(__FILE__), '../..', 'Rakefile')
+#   Rake::Task['test:seed_redis_with_one_object'].invoke
+# end
+
+# After do
+#   puts "------------ running After hook"
+#   load File.join(File.dirname(__FILE__), '../..', 'Rakefile')
+#   Rake::Task['test:clear_redis'].invoke
+# end
+
+
+
+
 
 Given(/^that there are (\d+) accident events in the database$/) do |no_of_accidents|
   rs = Situation.find(type: "accident")
@@ -48,13 +56,18 @@ When(/^I GET to "([^"]*)"$/) do |page|
   expect(@response).not_to be nil
 end
 
-# Then(/^I see a HTML page with JSON on it$/) do
-#   uri = URI.parse(@page)
-#   response = Net::HTTP.get(uri)
-#   resp = JSON.parse(response)
-#   expect(resp).not_to be nil
-# end
+Given(/^that there is an accident in the database with the id '([A-Z]{3}\d+)'$/) do |guid|
+  @rs = Situation.find(guid: guid)
+  expect(@rs.size).to eq(1)
+end
 
-# Then(/^I see a HTML page with (\d+) piece of JSON$/) do |arg1|
-#   pending "finish first few tests"
-# end
+Given(/^the version number (\d+)$/) do |version_no|
+  expect(@rs.first.version.to_i).to eq(version_no.to_i)
+end
+
+Then(/^I receive a JSON object with a version number of (\d+)$/) do |version_no|
+	expect(@response[0]['version'].to_i).to eq(version_no.to_i)
+end
+
+
+

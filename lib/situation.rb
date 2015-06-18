@@ -101,8 +101,3 @@ class Situation < Ohm::Model
   end
 
 end
-
-arr = ParseWebXML.parse("http://hatrafficinfo.dft.gov.uk/feeds/datex/England/UnplannedEvent/content.xml")
-s = Situation.initialize(arr[0].to_s)
-
-#p s.attributes
