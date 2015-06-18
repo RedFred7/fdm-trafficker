@@ -16,3 +16,10 @@ so that I can get event data as JSON
 	# Given that there is an accident in the database with the id 'ABC1234'
 	# When I GET to "http://localhost:1337/roadworks/ABC1234"
 	# Then I receive a JSON array with 5 objects in the response body
+
+	@average_delay
+	Scenario: Get average delay-time accident data for a region
+	Given that there are 5 accident events in the database for London 
+	When I GET to "http://localhost:1337/accidents/London"
+	Then I receive a JSON array with a delay time of xxxxx
+	And a status code of 200
