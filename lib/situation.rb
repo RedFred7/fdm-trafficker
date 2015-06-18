@@ -4,6 +4,7 @@ require 'nokogiri'
 require 'date'
 require_relative 'modules/utils'
 require_relative 'scraper'
+require_relative 'region_finder'
 
 class Situation < Ohm::Model
   attribute :guid
@@ -16,6 +17,7 @@ class Situation < Ohm::Model
   attribute :date
   attribute :comment
   attribute :location_name
+  index :location_name
   attribute :latitude
   attribute :longitude
   attribute :traffic_type
@@ -64,7 +66,7 @@ class Situation < Ohm::Model
   end
 
   def self.get_location_name
-   ## to be computed with mapfinder
+    RegionFinder.lat_long(self.get_latitude,self.get_longitude)
   end
 
   def self.get_latitude
@@ -73,7 +75,7 @@ class Situation < Ohm::Model
   end
 
   def self.get_longitude
-        @doc.xpath("/situation/situationrecord/groupoflocations/locationcontainedingroup/tpegpointlocation/
+    @doc.xpath("/situation/situationrecord/groupoflocations/locationcontainedingroup/tpegpointlocation/
       framedpoint/pointcoordinates/longitude").text
   end
 
@@ -86,11 +88,11 @@ class Situation < Ohm::Model
   end
 
   def self.get_capacityRemaining
-   @doc.xpath("/situation/situationrecord/impact/impactdetails/capacityremaining").text
+    @doc.xpath("/situation/situationrecord/impact/impactdetails/capacityremaining").text
   end
 
   def self.get_trafficRestrictionType
-   @doc.xpath("/situation/situationrecord/impact/impactdetails/trafficrestrictiontype").text
+    @doc.xpath("/situation/situationrecord/impact/impactdetails/trafficrestrictiontype").text
   end
 
   def tester

@@ -27,17 +27,17 @@ class RegionFinder
   end
 end
 
-puts RegionFinder.lat_long(52.509106,-1.861836)
-# puts RegionFinder.lat_long(51.42615,0.238258)
-# puts RegionFinder.lat_long(52.34102,-0.207559)
-# puts RegionFinder.postcode_from_lat_long(51.4223, 0.23722)
+# puts RegionFinder.lat_long(52.509106,-1.861836)
+# # puts RegionFinder.lat_long(51.42615,0.238258)
+# # puts RegionFinder.lat_long(52.34102,-0.207559)
+# # puts RegionFinder.postcode_from_lat_long(51.4223, 0.23722)
 
-uri = URI("https://maps.googleapis.com/maps/api/geocode/json?latlng=51.4223,0.23722&sensor=false")
-response = Net::HTTP.get(uri)
-# p JSON.parse(response)["results"][2]['address_components']
+# uri = URI("https://maps.googleapis.com/maps/api/geocode/json?latlng=51.4223,0.23722&sensor=false")
+# response = Net::HTTP.get(uri)
+# # p JSON.parse(response)["results"][2]['address_components']
 
 
-JSON.parse(response)["results"][1].each do |item|
-	puts "************************************************"
-	p item
-end
+# JSON.parse(response)["results"][1].each do |item|
+# 	puts "************************************************"
+# 	p item
+# end
