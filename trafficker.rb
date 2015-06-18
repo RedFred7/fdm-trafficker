@@ -47,7 +47,7 @@ get "/accidents" do
   rs = Situation.find(type: "accident")
   results = []
   if rs.size > 0
-    rs.each do |r| 
+    rs.each do |r|
       results << r.attributes
     end
     status 200
@@ -59,7 +59,9 @@ get "/accidents" do
   body
 end
 
-
+get "accidents/:region" do
+   region_average = {'delay_time' => AggregateFunctions.new.average_where(params["region"])}.to_json
+end
 
 get "/accidents/:id" do
   @id = params[:id]
