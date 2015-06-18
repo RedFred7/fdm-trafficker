@@ -2,6 +2,9 @@
 
 require "sinatra"
 require "json"
+
+# require "rspec-mocks"
+
 require_relative "lib/situation"
 
 configure :development do

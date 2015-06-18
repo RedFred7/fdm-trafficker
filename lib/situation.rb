@@ -2,9 +2,9 @@ require 'ohm'
 require 'open-uri'
 require 'nokogiri'
 require 'date'
+require_relative 'RegionFinder'
 require_relative 'modules/utils'
 require_relative 'scraper'
-require_relative 'region_finder'
 
 class Situation < Ohm::Model
   attribute :guid
@@ -75,7 +75,7 @@ class Situation < Ohm::Model
   end
 
   def self.get_longitude
-    @doc.xpath("/situation/situationrecord/groupoflocations/locationcontainedingroup/tpegpointlocation/
+        @doc.xpath("/situation/situationrecord/groupoflocations/locationcontainedingroup/tpegpointlocation/
       framedpoint/pointcoordinates/longitude").text
   end
 
@@ -88,21 +88,17 @@ class Situation < Ohm::Model
   end
 
   def self.get_capacityRemaining
-    @doc.xpath("/situation/situationrecord/impact/impactdetails/capacityremaining").text
+   @doc.xpath("/situation/situationrecord/impact/impactdetails/capacityremaining").text
   end
 
   def self.get_trafficRestrictionType
-    @doc.xpath("/situation/situationrecord/impact/impactdetails/trafficrestrictiontype").text
+   @doc.xpath("/situation/situationrecord/impact/impactdetails/trafficrestrictiontype").text
   end
 
-  def tester
-    xml = Nokogiri::HTML(open("http://hatrafficinfo.dft.gov.uk/feeds/datex/England/UnplannedEvent/content.xml"))
-    res = xml.xpath("/html/body/d2logicalmodel/payloadpublication/situation/situationrecord/@id")[0]
-  end
 
 end
 
 arr = ParseWebXML.parse("http://hatrafficinfo.dft.gov.uk/feeds/datex/England/UnplannedEvent/content.xml")
+#p arr[1]
 s = Situation.initialize(arr[0].to_s)
 
-#p s.attributes
