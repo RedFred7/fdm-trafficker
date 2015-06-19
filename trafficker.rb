@@ -65,7 +65,9 @@ get "/accidents" do
   body << results.to_json
 end
 
-
+get "accidents/:region" do
+   region_average = {'delay_time' => AggregateFunctions.new.average_where(params["region"])}.to_json
+end
 
 get "/accidents/:guid" do
   rs = Situation.find(guid: params[:guid])

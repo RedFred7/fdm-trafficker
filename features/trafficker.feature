@@ -5,7 +5,7 @@ As a web service
 I can access the events page
 so that I can get event data as JSON
 
-	@accidents
+	@accident
 	Scenario: Get all accident data
 	Given that there are 6 accident events in the database
 	When I GET to "http://localhost:1337/accidents"
@@ -18,4 +18,11 @@ so that I can get event data as JSON
 	And the version number 1234
 	When I GET to "http://localhost:1337/accidents/ABC1234"
 	Then I receive a JSON object with a version number of 1234
+	And a status code of 200
+
+@average_delay
+	Scenario: Get average delay-time accident data for a region
+	Given that there are 5 accident events in the database for London 
+	When I GET to "http://localhost:1337/accidents/London"
+	Then I receive a JSON array with a delay time of xxxxx
 	And a status code of 200

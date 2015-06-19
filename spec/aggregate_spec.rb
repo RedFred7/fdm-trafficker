@@ -1,8 +1,8 @@
 describe AggregateFunction do
-  ## Create some mock data to query on
-  # before :all do
-  #   `rake test:seed_redis_for_aggregation`
-  # end
+  # Create some mock data to query on
+  before :all do
+    `rake test:seed_redis_for_aggregation`
+  end
 
   it "should accept a string and should return a float number" do
     query = AggregateFunction.new
@@ -20,9 +20,9 @@ describe AggregateFunction do
   	expect(query.average_where('Faafaf')).to eq(0)
   end
 
-  ## delete the data created before the tests
-  # after :all do
-  #   `rake test:clear_redis`
-  # end
+  # delete the data created before the tests
+  after :all do
+    `rake test:clear_redis`
+  end
 
 end

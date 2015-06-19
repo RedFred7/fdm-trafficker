@@ -9,6 +9,7 @@ class AggregateFunction
     end
 
     @situation_set.size == 0 ? 0.00 : sum/@situation_set.size
+
   end
 
 end
