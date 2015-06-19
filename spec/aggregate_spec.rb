@@ -1,8 +1,8 @@
 describe AggregateFunction do
   ## Create some mock data to query on
-  before :all do
-    `rake test:seed_redis_for_aggregation`
-  end
+  # before :all do
+  #   `rake test:seed_redis_for_aggregation`
+  # end
 
   it "should accept a string and should return a float number" do
     query = AggregateFunction.new
@@ -21,8 +21,8 @@ describe AggregateFunction do
   end
 
   ## delete the data created before the tests
-  after :all do
-    `rake test:clear_redis`
-  end
+  # after :all do
+  #   `rake test:clear_redis`
+  # end
 
 end
