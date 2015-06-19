@@ -1,5 +1,5 @@
 require 'rufus-scheduler'
-#require 'situation'
+require 'situation'
 require_relative 'scraper'
 require_relative 'validator'
 
@@ -13,7 +13,7 @@ scheduler.interval '1s' do
 
     if Validator.validate(situation)
 
-      #Situation.new(situation.to_s)
+      Situation.new(situation.to_s)
 
       puts "created"
 
