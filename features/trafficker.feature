@@ -7,9 +7,9 @@ so that I can get event data as JSON
 
 	@accident
 	Scenario: Get all accident data
-	Given that there are 6 accident events in the database
+	Given that there are 16 accident events in the database
 	When I GET to "http://localhost:1337/accidents"
-	Then I receive a JSON array with 6 objects in the response body
+	Then I receive a JSON array with 16 objects in the response body
 	And a status code of 200
 
 	@specific_accident
@@ -20,9 +20,9 @@ so that I can get event data as JSON
 	Then I receive a JSON object with a version number of 1234
 	And a status code of 200
 
-@average_delay
+	@average_delay
 	Scenario: Get average delay-time accident data for a region
-	Given that there are 5 accident events in the database for London 
+	Given that there are 20 accident events in the database for 'London'
 	When I GET to "http://localhost:1337/accidents/London"
 	Then I receive a JSON array with a delay time of xxxxx
 	And a status code of 200
