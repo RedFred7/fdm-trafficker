@@ -10,7 +10,7 @@ class RegionFinder
   def self.lat_long(latitude, longitude)
     postcode = postcode_from_lat_long(latitude, longitude)
     if postcode
-      european_region_from_postcode(postcode)
+      european_region_from_postcode(postcode).downcase.gsub(/\s+/,"")
     end
   end
 

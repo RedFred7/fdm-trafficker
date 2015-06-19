@@ -2,6 +2,7 @@
 
 require "sinatra"
 require "json"
+require_relative "lib/aggregateFunctions"
 
 # require "rspec-mocks"
 
@@ -50,7 +51,7 @@ get "/accidents" do
   rs = Situation.find(type: "accident")
   results = []
   if rs.size > 0
-    rs.each do |r| 
+    rs.each do |r|
       results << r.attributes
     end
     status 200
@@ -62,7 +63,11 @@ get "/accidents" do
   body
 end
 
-
+get "/accidents/:region" do
+  headers['Access-Control-Allow-Origin'] = "*"
+  value = AggregateFunction.new.average_where(params["region"])
+  region_average = {'delay_time' => value.to_s}.to_json
+end
 
 get "/accidents/:id" do
   @id = params[:id]
@@ -71,7 +76,7 @@ get "/accidents/:id" do
     body << @accidents_id unless Situation.find(type: "accident").nil?
     slim "accidents_#{@id}".to_sym
   else
-    slim :error
+    #slim :error
   end
 end
 

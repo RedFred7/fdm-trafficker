@@ -102,3 +102,4 @@ arr = ParseWebXML.parse("http://hatrafficinfo.dft.gov.uk/feeds/datex/England/Unp
 #p arr[1]
 s = Situation.initialize(arr[0].to_s)
 
+
