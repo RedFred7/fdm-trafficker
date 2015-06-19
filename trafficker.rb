@@ -13,9 +13,6 @@ end
 
 situation = Situation.new
 
-get "/" do
-  slim :home
-end
 
 get "/login" do
   slim :login
@@ -42,6 +39,15 @@ get "/events" do
   slim :events
 end
 
+get "/test" do
+  
+end
+
+
+get "/" do 
+  slim :accident_map
+  
+end
 
 get "/accidents" do
   rs = Situation.find(type: "accident")
@@ -71,6 +77,10 @@ get "/accidents/:guid" do
     status 500
   end
   body << results.to_json
+end
+
+get "/accidents/:region" do
+  {dealy_average: 2400}.to_json
 end
 
 
